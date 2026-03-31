@@ -42,15 +42,15 @@ This provides an MCP server for accessing the brand Postgres database using Pyth
    }
    ```
 
-## EC2 Deployment (Amazon Linux)
+## EC2 Deployment (Ubuntu)
 
-If you are deploying this MCP server to an Amazon Linux EC2 instance (e.g. Amazon Linux 2023), follow these steps to securely configure the server using the FastAPI implementation (`src/server2.py`).
+If you are deploying this MCP server to an Ubuntu EC2 instance (e.g. Ubuntu 22.04 or 24.04), follow these steps to securely configure the server using the FastAPI implementation (`src/server2.py`).
 
 ### 1. Update and Install Dependencies
 SSH into your EC2 instance and run the following commands to install Python 3 and Git:
 ```bash
-sudo yum update -y
-sudo yum install git python3 python3-pip -y
+sudo apt update && sudo apt upgrade -y
+sudo apt install git python3 python3-pip python3-venv -y
 ```
 
 ### 2. Clone the Repository
@@ -91,8 +91,8 @@ Open `%APPDATA%\Claude\claude_desktop_config.json` on your Windows machine and a
       "command": "ssh",
       "args": [
         "-i", "C:/path/to/your/ec2-key.pem",
-        "ec2-user@YOUR-EC2-PUBLIC-IP",
-        "cd /home/ec2-user/MCPforGBL && source .venv/bin/activate && python3 -m src.server"
+        "ubuntu@YOUR-EC2-PUBLIC-IP",
+        "cd /home/ubuntu/MCPforGBL && source .venv/bin/activate && python3 -m src.server"
       ]
     }
   }
